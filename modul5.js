@@ -1,188 +1,110 @@
-// Function to display data using innerHTML
-function displayDataInnerHTML() {
-    const dataDisplay = document.getElementById('data-display');
-    const books = ['Harry Potter', 'Lord of the Rings', 'To Kill a Mockingbird'];
-    
-    let html = '<h3>Daftar Buku (innerHTML):</h3><ul>';
-    books.forEach(book => {
-        html += `<li>${book}</li>`;
-    });
-    html += '</ul>';
-    
-    dataDisplay.innerHTML = html;
-}
+// Data perpustakaan
+const perpustakaanData = {
+    nama: "Digital Library",
+    alamat: "Jl. Pendidikan No. 123",
+    tahunBerdiri: 2020,
+    koleksiBuku: 5000
+};
 
-// Function to display data using createElement and appendChild
-function displayDataCreateElement() {
-    const dataDisplay = document.getElementById('data-display');
-    const authors = ['J.K. Rowling', 'J.R.R. Tolkien', 'Harper Lee'];
-    
-    const heading = document.createElement('h3');
-    heading.textContent = 'Daftar Penulis (createElement):';
-    dataDisplay.appendChild(heading);
-    
-    const list = document.createElement('ul');
-    authors.forEach(author => {
-        const item = document.createElement('li');
-        item.textContent = author;
-        list.appendChild(item);
-    });
-    
-    dataDisplay.appendChild(list);
-}
-
-// Function to display data using template literals and insertAdjacentHTML
-function displayDataTemplateString() {
-    const dataDisplay = document.getElementById('data-display');
-    const genres = ['Fiksi', 'Non-Fiksi', 'Sejarah', 'Sains'];
-    
-    const template = `
-        <h3>Kategori Buku (template string):</h3>
-        <ul>
-            ${genres.map(genre => `<li>${genre}</li>`).join('')}
-        </ul>
-    `;
-    
-    dataDisplay.insertAdjacentHTML('beforeend', template);
-}
-
-// Function to display library information
-function displayLibraryInfo() {
-    const infoDisplay = document.getElementById('info-display');
-    const libraryName = "Perpustakaan Digital";
-    const bookCount = 1000;
-    const isOpen = true;
-    
-    let message = `Selamat datang di ${libraryName}!\n`;
-    message += `Kami memiliki lebih dari ${bookCount} buku.\n`;
-    
-    if (isOpen) {
-        message += "Perpustakaan sedang buka. ";
-        
-        const currentHour = new Date().getHours();
-        if (currentHour < 12) {
-            message += "Selamat pagi!";
-        } else if (currentHour < 18) {
-            message += "Selamat siang!";
-        } else {
-            message += "Selamat malam!";
-        }
-    } else {
-        message += "Maaf, perpustakaan sedang tutup.";
-    }
-    
-    infoDisplay.innerHTML = `<p>${message}</p>`;
-    
-    // Display opening hours
-    const openingHours = ["Senin-Jumat: 08:00 - 20:00", "Sabtu: 09:00 - 17:00", "Minggu: Tutup"];
-    const hoursList = document.createElement('ul');
-    
-    openingHours.forEach(hour => {
-        const item = document.createElement('li');
-        item.textContent = hour;
-        hoursList.appendChild(item);
-    });
-    
-    const hoursHeading = document.createElement('h3');
-    hoursHeading.textContent = 'Jam Buka:';
-    infoDisplay.appendChild(hoursHeading);
-    infoDisplay.appendChild(hoursList);
-}
-
-// Data buku pameran
-const bukuPameran = [
-    { judul: "Laskar Pelangi", penulis: "Andrea Hirata", deskripsi: "Novel tentang perjuangan anak-anak di Belitung untuk mendapatkan pendidikan.", gambar: "bahan/laskar.jpeg" },
-    { judul: "Bumi Manusia", penulis: "Pramoedya Ananta Toer", deskripsi: "Novel sejarah yang mengisahkan perjuangan melawan kolonialisme Belanda.", gambar: "bahan/bumi.jpeg" },
-    { judul: "Pulang", penulis: "Tere Liye", deskripsi: "Kisah perjalanan hidup seorang anak yang merantau dan akhirnya pulang ke kampung halamannya.", gambar: "bahan/pulang.jpeg" },
-    { judul: "Ronggeng Dukuh Paruk", penulis: "Ahmad Tohari", deskripsi: "Novel yang mengangkat kehidupan penari ronggeng di sebuah desa kecil.", gambar: "bahan/ronggeng.jpeg" },
-    { judul: "Sang Pemimpi", penulis: "Andrea Hirata", deskripsi: "Lanjutan dari Laskar Pelangi, mengisahkan perjuangan untuk menggapai mimpi.", gambar: "bahan/sang.jpeg" },
-    { judul: "Negeri 5 Menara", penulis: "Ahmad Fuadi", deskripsi: "Kisah inspiratif tentang perjuangan menuntut ilmu di pesantren.", gambar: "bahan/5.jpeg" },
-    { judul: "Perahu Kertas", penulis: "Dee Lestari", deskripsi: "Novel romantis yang mengisahkan perjalanan cinta dua anak manusia.", gambar: "bahan/perahu.jpeg" },
-    { judul: "Ayat-Ayat Cinta", penulis: "Habiburrahman El Shirazy", deskripsi: "Novel islami yang mengisahkan perjalanan cinta seorang mahasiswa di Mesir.", gambar: "bahan/ayat.jpeg" },
-    { judul: "Cantik Itu Luka", penulis: "Eka Kurniawan", deskripsi: "Novel yang mengangkat sejarah Indonesia dengan unsur realisme magis.", gambar: "bahan/cantik.jpeg" },
-    { judul: "Lelaki Harimau", penulis: "Eka Kurniawan", deskripsi: "Novel yang menggabungkan realisme dengan cerita rakyat Indonesia.", gambar: "bahan/lelaki.jpeg" }
+// Informasi perpustakaan
+const informasiPerpustakaan = [
+    "Buka setiap hari: 08.00 - 20.00 WIB",
+    "Layanan peminjaman buku online",
+    "Fasilitas ruang baca yang nyaman",
+    "Akses internet gratis"
 ];
 
-let currentSlide = 0;
+// Data buku untuk pameran
+const bukuPameran = [
+    {
+        judul: "JavaScript Modern",
+        penulis: "John Doe",
+        tahun: 2023,
+        gambar: "bahan/java.jpeg"
+    },
+    {
+        judul: "Python untuk Pemula",
+        penulis: "Jane Smith",
+        tahun: 2024,
+        gambar: "bahan/python.jpeg"
+    },
+    {
+        judul: "Data Science Basic",
+        penulis: "David Wilson",
+        tahun: 2023,
+        gambar: "bahan/data.jpeg"
+    }
+];
 
-// Function to display exhibition books as an animated slider
-function displayBukuPameran() {
-    const sliderContent = document.querySelector('.slider-content');
-    sliderContent.innerHTML = ''; // Clear previous content
-
-    bukuPameran.forEach((buku, index) => {
-        const bukuElement = document.createElement('div');
-        bukuElement.className = 'buku-item';
-        bukuElement.innerHTML = `
-            <img src="${buku.gambar}" alt="${buku.judul}" class="buku-gambar">
-            <div class="buku-info">
-                <h4>${buku.judul}</h4>
-                <p><strong>Penulis:</strong> ${buku.penulis}</p>
-                <p>${buku.deskripsi}</p>
+// Menampilkan data perpustakaan
+document.addEventListener('DOMContentLoaded', function() {
+    // Menampilkan data perpustakaan
+    const dataDisplay = document.getElementById('data-display');
+    dataDisplay.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <h4>${perpustakaanData.nama}</h4>
+                <p>Alamat: ${perpustakaanData.alamat}</p>
+                <p>Tahun Berdiri: ${perpustakaanData.tahunBerdiri}</p>
+                <p>Jumlah Koleksi Buku: ${perpustakaanData.koleksiBuku}</p>
             </div>
-        `;
-        sliderContent.appendChild(bukuElement);
+        </div>
+    `;
+
+    // Menampilkan informasi perpustakaan
+    const infoDisplay = document.getElementById('info-display');
+    infoDisplay.innerHTML = `
+        <div class="card">
+            <div class="card-body">
+                <ul class="list-group">
+                    ${informasiPerpustakaan.map(info => `
+                        <li class="list-group-item">${info}</li>
+                    `).join('')}
+                </ul>
+            </div>
+        </div>
+    `;
+
+    // Mengatur tampilan pameran buku
+    let currentSlide = 0;
+    const sliderContent = document.querySelector('.slider-content');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
+    const toggleButton = document.getElementById('togglePameran');
+    const pameranInfo = document.getElementById('pameranInfo');
+
+    // Toggle pameran
+    toggleButton.addEventListener('click', function() {
+        pameranInfo.style.display = pameranInfo.style.display === 'none' ? 'block' : 'none';
+        toggleButton.textContent = pameranInfo.style.display === 'none' ? 'Pamerkan Buku' : 'Sembunyikan Pameran';
     });
 
-    updateSliderPosition();
-}
-
-// Function to update slider position
-function updateSliderPosition() {
-    const sliderContent = document.querySelector('.slider-content');
-    sliderContent.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-
-// Function to show next slide
-function nextSlide() {
-    currentSlide = (currentSlide + 1) % bukuPameran.length;
-    updateSliderPosition();
-}
-
-// Function to show previous slide
-function prevSlide() {
-    currentSlide = (currentSlide - 1 + bukuPameran.length) % bukuPameran.length;
-    updateSliderPosition();
-}
-
-// Event listener for the "Pameran Buku" button
-document.getElementById('togglePameran').addEventListener('click', function() {
-    const pameranInfo = document.getElementById('pameranInfo');
-    if (pameranInfo.style.display === 'none') {
-        pameranInfo.style.display = 'block';
-        this.textContent = 'Sembunyikan Pameran';
-        displayBukuPameran(); // Display exhibition books
-    } else {
-        pameranInfo.style.display = 'none';
-        this.textContent = 'Pamerkan Buku';
+    // Fungsi untuk menampilkan slide
+    function showSlide(index) {
+        const buku = bukuPameran[index];
+        sliderContent.innerHTML = `
+            <div class="card text-center">
+                <img src="${buku.gambar}" class="card-img-top mx-auto" alt="${buku.judul}" style="width: 150px;">
+                <div class="card-body">
+                    <h5 class="card-title">${buku.judul}</h5>
+                    <p class="card-text">Penulis: ${buku.penulis}</p>
+                    <p class="card-text">Tahun: ${buku.tahun}</p>
+                </div>
+            </div>
+        `;
     }
+
+    // Event listeners untuk navigasi slider
+    prevButton.addEventListener('click', function() {
+        currentSlide = (currentSlide - 1 + bukuPameran.length) % bukuPameran.length;
+        showSlide(currentSlide);
+    });
+
+    nextButton.addEventListener('click', function() {
+        currentSlide = (currentSlide + 1) % bukuPameran.length;
+        showSlide(currentSlide);
+    });
+
+    // Tampilkan slide pertama
+    showSlide(currentSlide);
 });
-
-// Event listeners for slider buttons
-document.getElementById('nextSlide').addEventListener('click', nextSlide);
-document.getElementById('prevSlide').addEventListener('click', prevSlide);
-
-// Automatic sliding
-function autoSlide() {
-    nextSlide();
-}
-
-let slideInterval = setInterval(autoSlide, 5000); // Change slide every 5 seconds
-
-// Pause auto-sliding when hovering over the slider
-document.querySelector('.slider-container').addEventListener('mouseenter', () => {
-    clearInterval(slideInterval);
-});
-
-// Resume auto-sliding when mouse leaves the slider
-document.querySelector('.slider-container').addEventListener('mouseleave', () => {
-    slideInterval = setInterval(autoSlide, 5000);
-});
-
-// Call functions when the page loads
-window.onload = function() {
-    displayDataInnerHTML();
-    displayDataCreateElement();
-    displayDataTemplateString();
-    displayLibraryInfo();
-};
